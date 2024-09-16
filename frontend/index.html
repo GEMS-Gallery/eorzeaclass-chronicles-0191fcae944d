@@ -9,15 +9,43 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
         }
         h1, h2 {
             color: #3a3a3a;
         }
+        .hero {
+            background-image: url('https://example.com/ffxiv-hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero-content {
+            background-color: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
             display: flex;
         }
         .job-list {
@@ -92,8 +120,13 @@
     </style>
 </head>
 <body>
-    <h1>Final Fantasy XIV Job Blog</h1>
-    
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Final Fantasy XIV</h1>
+            <p>Explore the world of Eorzea and discover your destiny as a Warrior of Light</p>
+        </div>
+    </div>
+
     <div class="container">
         <div class="job-list">
             <h2>Jobs</h2>
