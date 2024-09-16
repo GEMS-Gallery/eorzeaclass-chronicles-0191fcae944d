@@ -61,12 +61,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             li.addEventListener('click', () => {
                 const selectedJob = jobs.find(job => job.name === li.dataset.jobName);
                 displayJobDetails(selectedJob);
+                charJobNameSelect.value = selectedJob.name;
             });
         });
 
         // Populate job select
         charJobNameSelect.innerHTML = '<option value="">Select Job</option>' + 
             jobs.map(job => `<option value="${job.name}">${job.name}</option>`).join('');
+
+        // Add change event listener to job select
+        charJobNameSelect.addEventListener('change', (e) => {
+            const selectedJob = jobs.find(job => job.name === e.target.value);
+            if (selectedJob) {
+                displayJobDetails(selectedJob);
+            }
+        });
 
         // Display all jobs initially
         displayAllJobs();
