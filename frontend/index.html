@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FFXIV Class Blog</title>
+    <title>FFXIV Job Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,18 +17,43 @@
         h1, h2 {
             color: #3a3a3a;
         }
-        .class-grid {
+        .container {
+            display: flex;
+        }
+        .job-list {
+            width: 250px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+        .job-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .job-list li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .job-list li:hover {
+            color: #4CAF50;
+        }
+        .main-content {
+            flex-grow: 1;
+        }
+        .job-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
-        .class-card {
+        .job-card {
             background-color: #fff;
             border-radius: 5px;
             padding: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .class-card img {
+        .job-card img {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
@@ -67,44 +92,52 @@
     </style>
 </head>
 <body>
-    <h1>Final Fantasy XIV Class Blog</h1>
+    <h1>Final Fantasy XIV Job Blog</h1>
     
-    <h2>Classes</h2>
-    <div id="classGrid" class="class-grid"></div>
-    
-    <h2>Add Your Character</h2>
-    <form id="characterForm">
-        <input type="text" id="charName" placeholder="Character Name" required>
-        <select id="charGender" required>
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select>
-        <select id="charClassName" required>
-            <option value="">Select Class</option>
-        </select>
-        <select id="charRace" required>
-            <option value="">Select Race</option>
-            <option value="Hyur">Hyur</option>
-            <option value="Elezen">Elezen</option>
-            <option value="Lalafell">Lalafell</option>
-            <option value="Miqo'te">Miqo'te</option>
-            <option value="Roegadyn">Roegadyn</option>
-            <option value="Au Ra">Au Ra</option>
-            <option value="Hrothgar">Hrothgar</option>
-            <option value="Viera">Viera</option>
-        </select>
-        <select id="charRole" required>
-            <option value="">Select Role</option>
-            <option value="Tank">Tank</option>
-            <option value="Healer">Healer</option>
-            <option value="DPS">DPS</option>
-        </select>
-        <button type="submit">Add Character</button>
-    </form>
-    
-    <h2>Characters</h2>
-    <div id="characterList"></div>
+    <div class="container">
+        <div class="job-list">
+            <h2>Jobs</h2>
+            <ul id="jobList"></ul>
+        </div>
+        <div class="main-content">
+            <h2>Job Details</h2>
+            <div id="jobGrid" class="job-grid"></div>
+            
+            <h2>Add Your Character</h2>
+            <form id="characterForm">
+                <input type="text" id="charName" placeholder="Character Name" required>
+                <select id="charGender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <select id="charJobName" required>
+                    <option value="">Select Job</option>
+                </select>
+                <select id="charRace" required>
+                    <option value="">Select Race</option>
+                    <option value="Hyur">Hyur</option>
+                    <option value="Elezen">Elezen</option>
+                    <option value="Lalafell">Lalafell</option>
+                    <option value="Miqo'te">Miqo'te</option>
+                    <option value="Roegadyn">Roegadyn</option>
+                    <option value="Au Ra">Au Ra</option>
+                    <option value="Hrothgar">Hrothgar</option>
+                    <option value="Viera">Viera</option>
+                </select>
+                <select id="charRole" required>
+                    <option value="">Select Role</option>
+                    <option value="Tank">Tank</option>
+                    <option value="Healer">Healer</option>
+                    <option value="DPS">DPS</option>
+                </select>
+                <button type="submit">Add Character</button>
+            </form>
+            
+            <h2>Characters</h2>
+            <div id="characterList"></div>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>

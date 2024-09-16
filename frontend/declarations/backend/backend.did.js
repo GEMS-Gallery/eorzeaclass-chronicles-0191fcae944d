@@ -1,12 +1,12 @@
 export const idlFactory = ({ IDL }) => {
   const Character = IDL.Record({
+    'jobName' : IDL.Text,
     'name' : IDL.Text,
     'race' : IDL.Text,
     'role' : IDL.Text,
     'gender' : IDL.Text,
-    'className' : IDL.Text,
   });
-  const Class = IDL.Record({
+  const Job = IDL.Record({
     'name' : IDL.Text,
     'role' : IDL.Text,
     'imageUrl' : IDL.Text,
@@ -14,7 +14,7 @@ export const idlFactory = ({ IDL }) => {
   return IDL.Service({
     'addCharacter' : IDL.Func([Character], [], []),
     'getAllCharacters' : IDL.Func([], [IDL.Vec(Character)], ['query']),
-    'getAllClasses' : IDL.Func([], [IDL.Vec(Class)], ['query']),
+    'getAllJobs' : IDL.Func([], [IDL.Vec(Job)], ['query']),
   });
 };
 export const init = ({ IDL }) => { return []; };

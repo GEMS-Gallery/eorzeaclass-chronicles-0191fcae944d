@@ -9,7 +9,7 @@ import Text "mo:base/Text";
 
 actor {
     // Types
-    type Class = {
+    type Job = {
         name: Text;
         role: Text;
         imageUrl: Text;
@@ -18,22 +18,22 @@ actor {
     type Character = {
         name: Text;
         gender: Text;
-        className: Text;
+        jobName: Text;
         race: Text;
         role: Text;
     };
 
     // Stable variables for persistence
-    stable var classesEntries : [(Text, Class)] = [];
+    stable var jobsEntries : [(Text, Job)] = [];
     stable var charactersEntries : [(Text, Character)] = [];
 
     // Create HashMaps from stable variables
-    let classes = HashMap.fromIter<Text, Class>(classesEntries.vals(), 10, Text.equal, Text.hash);
+    let jobs = HashMap.fromIter<Text, Job>(jobsEntries.vals(), 10, Text.equal, Text.hash);
     let characters = HashMap.fromIter<Text, Character>(charactersEntries.vals(), 10, Text.equal, Text.hash);
 
-    // Initialize classes
-    private func initClasses() {
-        let initialClasses : [Class] = [
+    // Initialize jobs
+    private func initJobs() {
+        let initialJobs : [Job] = [
             { name = "Paladin"; role = "Tank"; imageUrl = "https://example.com/paladin.jpg" },
             { name = "Warrior"; role = "Tank"; imageUrl = "https://example.com/warrior.jpg" },
             { name = "Dark Knight"; role = "Tank"; imageUrl = "https://example.com/dark_knight.jpg" },
@@ -56,17 +56,17 @@ actor {
             { name = "Blue Mage"; role = "DPS"; imageUrl = "https://example.com/blue_mage.jpg" }
         ];
 
-        for (cls in initialClasses.vals()) {
-            classes.put(cls.name, cls);
+        for (job in initialJobs.vals()) {
+            jobs.put(job.name, job);
         };
     };
 
-    // Initialize classes on canister creation
-    initClasses();
+    // Initialize jobs on canister creation
+    initJobs();
 
-    // Query to get all classes
-    public query func getAllClasses() : async [Class] {
-        Iter.toArray(classes.vals())
+    // Query to get all jobs
+    public query func getAllJobs() : async [Job] {
+        Iter.toArray(jobs.vals())
     };
 
     // Update call to add a new character
@@ -81,13 +81,13 @@ actor {
 
     // Pre-upgrade hook
     system func preupgrade() {
-        classesEntries := Iter.toArray(classes.entries());
+        jobsEntries := Iter.toArray(jobs.entries());
         charactersEntries := Iter.toArray(characters.entries());
     };
 
     // Post-upgrade hook
     system func postupgrade() {
-        classesEntries := [];
+        jobsEntries := [];
         charactersEntries := [];
     };
 }

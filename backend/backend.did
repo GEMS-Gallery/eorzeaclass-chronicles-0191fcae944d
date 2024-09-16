@@ -1,4 +1,4 @@
-type Class = 
+type Job = 
  record {
    imageUrl: text;
    name: text;
@@ -6,8 +6,8 @@ type Class =
  };
 type Character = 
  record {
-   className: text;
    gender: text;
+   jobName: text;
    name: text;
    race: text;
    role: text;
@@ -15,5 +15,5 @@ type Character =
 service : {
   addCharacter: (Character) -> ();
   getAllCharacters: () -> (vec Character) query;
-  getAllClasses: () -> (vec Class) query;
+  getAllJobs: () -> (vec Job) query;
 }

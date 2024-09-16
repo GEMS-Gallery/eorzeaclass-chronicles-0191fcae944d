@@ -1,25 +1,59 @@
 import { backend } from 'declarations/backend';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const classGrid = document.getElementById('classGrid');
+    const jobList = document.getElementById('jobList');
+    const jobGrid = document.getElementById('jobGrid');
     const characterForm = document.getElementById('characterForm');
     const characterList = document.getElementById('characterList');
-    const charClassNameSelect = document.getElementById('charClassName');
+    const charJobNameSelect = document.getElementById('charJobName');
 
-    // Fetch and display classes
-    async function displayClasses() {
-        const classes = await backend.getAllClasses();
-        classGrid.innerHTML = classes.map(c => `
-            <div class="class-card">
-                <h3>${c.name}</h3>
-                <p>Role: ${c.role}</p>
-                <img src="${c.imageUrl}" alt="${c.name}">
-            </div>
+    let jobs = [];
+
+    // Fetch and display jobs
+    async function displayJobs() {
+        jobs = await backend.getAllJobs();
+        
+        // Populate job list
+        jobList.innerHTML = jobs.map(job => `
+            <li data-job-name="${job.name}">${job.name}</li>
         `).join('');
 
-        // Populate class select
-        charClassNameSelect.innerHTML = '<option value="">Select Class</option>' + 
-            classes.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
+        // Add click event listeners to job list items
+        jobList.querySelectorAll('li').forEach(li => {
+            li.addEventListener('click', () => {
+                const selectedJob = jobs.find(job => job.name === li.dataset.jobName);
+                displayJobDetails(selectedJob);
+            });
+        });
+
+        // Populate job select
+        charJobNameSelect.innerHTML = '<option value="">Select Job</option>' + 
+            jobs.map(job => `<option value="${job.name}">${job.name}</option>`).join('');
+
+        // Display all jobs initially
+        displayAllJobs();
+    }
+
+    // Display all jobs in the grid
+    function displayAllJobs() {
+        jobGrid.innerHTML = jobs.map(job => `
+            <div class="job-card">
+                <h3>${job.name}</h3>
+                <p>Role: ${job.role}</p>
+                <img src="${job.imageUrl}" alt="${job.name}">
+            </div>
+        `).join('');
+    }
+
+    // Display details of a single job
+    function displayJobDetails(job) {
+        jobGrid.innerHTML = `
+            <div class="job-card">
+                <h3>${job.name}</h3>
+                <p>Role: ${job.role}</p>
+                <img src="${job.imageUrl}" alt="${job.name}">
+            </div>
+        `;
     }
 
     // Fetch and display characters
@@ -29,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div>
                 <h3>${char.name}</h3>
                 <p>Gender: ${char.gender}</p>
-                <p>Class: ${char.className}</p>
+                <p>Job: ${char.jobName}</p>
                 <p>Race: ${char.race}</p>
                 <p>Role: ${char.role}</p>
             </div>
@@ -42,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const character = {
             name: document.getElementById('charName').value,
             gender: document.getElementById('charGender').value,
-            className: document.getElementById('charClassName').value,
+            jobName: document.getElementById('charJobName').value,
             race: document.getElementById('charRace').value,
             role: document.getElementById('charRole').value
         };
@@ -53,6 +87,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // Initial display
-    displayClasses();
+    displayJobs();
     displayCharacters();
 });
