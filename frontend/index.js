@@ -7,12 +7,36 @@ document.addEventListener('DOMContentLoaded', async () => {
     const characterList = document.getElementById('characterList');
     const charJobNameSelect = document.getElementById('charJobName');
 
-    let jobs = [];
+    const jobs = [
+        // Tanks
+        { name: "Paladin", role: "Tank", category: "Tank", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/V/u76URon_sCA-Qk12_VEcgDMbxY.png" },
+        { name: "Warrior", role: "Tank", category: "Tank", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/P/ZlzEpOmdGXFDLcASz3GZvVBjB8.png" },
+        { name: "Dark Knight", role: "Tank", category: "Tank", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/1/saMvd8Wxx5wILZjHtdGrp9d4M4.png" },
+        { name: "Gunbreaker", role: "Tank", category: "Tank", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/8/4Xjd2MN8b-9U7WkZLZAs1Ddq9k.png" },
+        // Healers
+        { name: "White Mage", role: "Healer", category: "Healer", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/X/c9k2nYw6jgp4JGX0FGxhLBGhLk.png" },
+        { name: "Scholar", role: "Healer", category: "Healer", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/s/2KtQzfKVJxRBgk8dYTIE8TOCKM.png" },
+        { name: "Astrologian", role: "Healer", category: "Healer", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/7/WerdZ1zQUYXoXVg-OyZj0_XJYE.png" },
+        { name: "Sage", role: "Healer", category: "Healer", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/3/aQzX014sj6LCGkJyR5OUEf1nmc.png" },
+        // Melee DPS
+        { name: "Monk", role: "DPS", category: "Melee DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/K/HrWvnCNsUJjBJJR12eL18a4T0U.png" },
+        { name: "Dragoon", role: "DPS", category: "Melee DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/t/Gp6FwIZTWHGN7KVAkfLelbBBNM.png" },
+        { name: "Ninja", role: "DPS", category: "Melee DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/0/Fso5hanZVEEAaZ9tLNxGg8jnXE.png" },
+        { name: "Samurai", role: "DPS", category: "Melee DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/E/d6Qr_Hw3b4_uc5rCZPNbfokoWM.png" },
+        { name: "Reaper", role: "DPS", category: "Melee DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/9/LbEQTE8Jcl1is_JFBv0w0ZXNLM.png" },
+        // Physical Ranged DPS
+        { name: "Bard", role: "DPS", category: "Physical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/1/gT1XHZtFhfGBzMBTzUveDgKYYA.png" },
+        { name: "Machinist", role: "DPS", category: "Physical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/l/5CZEvDOMYMyVn2td9LZigsgw9s.png" },
+        { name: "Dancer", role: "DPS", category: "Physical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/v/2mxh5iqH3xWLMijJ-vj5M9Itwk.png" },
+        // Magical Ranged DPS
+        { name: "Black Mage", role: "DPS", category: "Magical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/m/gWO1KNKngEEGiPwfFyaa9b4OYE.png" },
+        { name: "Summoner", role: "DPS", category: "Magical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/4/IM3PoP6p06GdJaEwd2YAZi5zYk.png" },
+        { name: "Red Mage", role: "DPS", category: "Magical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/2/wqNgq7nPWUhEveujuIE44BTCYI.png" },
+        { name: "Blue Mage", role: "DPS", category: "Limited Job", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/6/M7Q0tqU8AB1PC5VHqbZx9bMjk8.png" }
+    ];
 
-    // Fetch and display jobs
-    async function displayJobs() {
-        jobs = await backend.getAllJobs();
-        
+    // Display jobs
+    function displayJobs() {
         // Group jobs by category
         const jobsByCategory = jobs.reduce((acc, job) => {
             if (!acc[job.category]) {
@@ -94,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             gender: document.getElementById('charGender').value,
             jobName: document.getElementById('charJobName').value,
             race: document.getElementById('charRace').value,
-            role: document.getElementById('charRole').value
+            role: jobs.find(job => job.name === document.getElementById('charJobName').value).role
         };
 
         await backend.addCharacter(character);
