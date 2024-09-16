@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFXIV Class Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #3a3a3a;
+        }
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .class-card {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .class-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #characterList {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Final Fantasy XIV Class Blog</h1>
+    
+    <h2>Classes</h2>
+    <div id="classGrid" class="class-grid"></div>
+    
+    <h2>Add Your Character</h2>
+    <form id="characterForm">
+        <input type="text" id="charName" placeholder="Character Name" required>
+        <select id="charGender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <select id="charClassName" required>
+            <option value="">Select Class</option>
+        </select>
+        <select id="charRace" required>
+            <option value="">Select Race</option>
+            <option value="Hyur">Hyur</option>
+            <option value="Elezen">Elezen</option>
+            <option value="Lalafell">Lalafell</option>
+            <option value="Miqo'te">Miqo'te</option>
+            <option value="Roegadyn">Roegadyn</option>
+            <option value="Au Ra">Au Ra</option>
+            <option value="Hrothgar">Hrothgar</option>
+            <option value="Viera">Viera</option>
+        </select>
+        <select id="charRole" required>
+            <option value="">Select Role</option>
+            <option value="Tank">Tank</option>
+            <option value="Healer">Healer</option>
+            <option value="DPS">DPS</option>
+        </select>
+        <button type="submit">Add Character</button>
+    </form>
+    
+    <h2>Characters</h2>
+    <div id="characterList"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>

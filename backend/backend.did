@@ -1,0 +1,19 @@
+type Class = 
+ record {
+   imageUrl: text;
+   name: text;
+   role: text;
+ };
+type Character = 
+ record {
+   className: text;
+   gender: text;
+   name: text;
+   race: text;
+   role: text;
+ };
+service : {
+  addCharacter: (Character) -> ();
+  getAllCharacters: () -> (vec Character) query;
+  getAllClasses: () -> (vec Class) query;
+}
