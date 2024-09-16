@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FFXIV Job Blog</title>
+    <title>FFXIV Job Guide</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-        h1, h2 {
+        h1, h2, h3 {
             color: #3a3a3a;
         }
         .hero {
@@ -117,20 +117,26 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+        .disclaimer {
+            font-size: 0.8em;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <div class="hero">
         <div class="hero-content">
-            <h1>Final Fantasy XIV</h1>
-            <p>Explore the world of Eorzea and discover your destiny as a Warrior of Light</p>
+            <h1>Final Fantasy XIV Job Guide</h1>
+            <p>Explore the diverse jobs of Eorzea and find your calling as a Warrior of Light</p>
         </div>
     </div>
 
     <div class="container">
         <div class="job-list">
             <h2>Jobs</h2>
-            <ul id="jobList"></ul>
+            <div id="jobList"></div>
         </div>
         <div class="main-content">
             <h2>Job Details</h2>
@@ -170,6 +176,11 @@
             <h2>Characters</h2>
             <div id="characterList"></div>
         </div>
+    </div>
+
+    <div class="disclaimer">
+        This is an unofficial fan site and is not affiliated with or endorsed by Square Enix.
+        FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
     </div>
 
     <script src="index.js"></script>

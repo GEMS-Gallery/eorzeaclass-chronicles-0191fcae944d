@@ -12,6 +12,7 @@ actor {
     type Job = {
         name: Text;
         role: Text;
+        category: Text;
         imageUrl: Text;
     };
 
@@ -34,26 +35,31 @@ actor {
     // Initialize jobs
     private func initJobs() {
         let initialJobs : [Job] = [
-            { name = "Paladin"; role = "Tank"; imageUrl = "https://example.com/paladin.jpg" },
-            { name = "Warrior"; role = "Tank"; imageUrl = "https://example.com/warrior.jpg" },
-            { name = "Dark Knight"; role = "Tank"; imageUrl = "https://example.com/dark_knight.jpg" },
-            { name = "Gunbreaker"; role = "Tank"; imageUrl = "https://example.com/gunbreaker.jpg" },
-            { name = "White Mage"; role = "Healer"; imageUrl = "https://example.com/white_mage.jpg" },
-            { name = "Scholar"; role = "Healer"; imageUrl = "https://example.com/scholar.jpg" },
-            { name = "Astrologian"; role = "Healer"; imageUrl = "https://example.com/astrologian.jpg" },
-            { name = "Sage"; role = "Healer"; imageUrl = "https://example.com/sage.jpg" },
-            { name = "Monk"; role = "DPS"; imageUrl = "https://example.com/monk.jpg" },
-            { name = "Dragoon"; role = "DPS"; imageUrl = "https://example.com/dragoon.jpg" },
-            { name = "Ninja"; role = "DPS"; imageUrl = "https://example.com/ninja.jpg" },
-            { name = "Samurai"; role = "DPS"; imageUrl = "https://example.com/samurai.jpg" },
-            { name = "Reaper"; role = "DPS"; imageUrl = "https://example.com/reaper.jpg" },
-            { name = "Bard"; role = "DPS"; imageUrl = "https://example.com/bard.jpg" },
-            { name = "Machinist"; role = "DPS"; imageUrl = "https://example.com/machinist.jpg" },
-            { name = "Dancer"; role = "DPS"; imageUrl = "https://example.com/dancer.jpg" },
-            { name = "Black Mage"; role = "DPS"; imageUrl = "https://example.com/black_mage.jpg" },
-            { name = "Summoner"; role = "DPS"; imageUrl = "https://example.com/summoner.jpg" },
-            { name = "Red Mage"; role = "DPS"; imageUrl = "https://example.com/red_mage.jpg" },
-            { name = "Blue Mage"; role = "DPS"; imageUrl = "https://example.com/blue_mage.jpg" }
+            // Tanks
+            { name = "Paladin"; role = "Tank"; category = "Tank"; imageUrl = "https://example.com/paladin.jpg" },
+            { name = "Warrior"; role = "Tank"; category = "Tank"; imageUrl = "https://example.com/warrior.jpg" },
+            { name = "Dark Knight"; role = "Tank"; category = "Tank"; imageUrl = "https://example.com/dark_knight.jpg" },
+            { name = "Gunbreaker"; role = "Tank"; category = "Tank"; imageUrl = "https://example.com/gunbreaker.jpg" },
+            // Healers
+            { name = "White Mage"; role = "Healer"; category = "Healer"; imageUrl = "https://example.com/white_mage.jpg" },
+            { name = "Scholar"; role = "Healer"; category = "Healer"; imageUrl = "https://example.com/scholar.jpg" },
+            { name = "Astrologian"; role = "Healer"; category = "Healer"; imageUrl = "https://example.com/astrologian.jpg" },
+            { name = "Sage"; role = "Healer"; category = "Healer"; imageUrl = "https://example.com/sage.jpg" },
+            // Melee DPS
+            { name = "Monk"; role = "DPS"; category = "Melee DPS"; imageUrl = "https://example.com/monk.jpg" },
+            { name = "Dragoon"; role = "DPS"; category = "Melee DPS"; imageUrl = "https://example.com/dragoon.jpg" },
+            { name = "Ninja"; role = "DPS"; category = "Melee DPS"; imageUrl = "https://example.com/ninja.jpg" },
+            { name = "Samurai"; role = "DPS"; category = "Melee DPS"; imageUrl = "https://example.com/samurai.jpg" },
+            { name = "Reaper"; role = "DPS"; category = "Melee DPS"; imageUrl = "https://example.com/reaper.jpg" },
+            // Physical Ranged DPS
+            { name = "Bard"; role = "DPS"; category = "Physical Ranged DPS"; imageUrl = "https://example.com/bard.jpg" },
+            { name = "Machinist"; role = "DPS"; category = "Physical Ranged DPS"; imageUrl = "https://example.com/machinist.jpg" },
+            { name = "Dancer"; role = "DPS"; category = "Physical Ranged DPS"; imageUrl = "https://example.com/dancer.jpg" },
+            // Magical Ranged DPS
+            { name = "Black Mage"; role = "DPS"; category = "Magical Ranged DPS"; imageUrl = "https://example.com/black_mage.jpg" },
+            { name = "Summoner"; role = "DPS"; category = "Magical Ranged DPS"; imageUrl = "https://example.com/summoner.jpg" },
+            { name = "Red Mage"; role = "DPS"; category = "Magical Ranged DPS"; imageUrl = "https://example.com/red_mage.jpg" },
+            { name = "Blue Mage"; role = "DPS"; category = "Limited Job"; imageUrl = "https://example.com/blue_mage.jpg" }
         ];
 
         for (job in initialJobs.vals()) {

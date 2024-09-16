@@ -9,7 +9,12 @@ export interface Character {
   'role' : string,
   'gender' : string,
 }
-export interface Job { 'name' : string, 'role' : string, 'imageUrl' : string }
+export interface Job {
+  'name' : string,
+  'role' : string,
+  'imageUrl' : string,
+  'category' : string,
+}
 export interface _SERVICE {
   'addCharacter' : ActorMethod<[Character], undefined>,
   'getAllCharacters' : ActorMethod<[], Array<Character>>,

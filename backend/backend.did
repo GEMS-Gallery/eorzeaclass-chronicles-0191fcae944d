@@ -1,5 +1,6 @@
 type Job = 
  record {
+   category: text;
    imageUrl: text;
    name: text;
    role: text;

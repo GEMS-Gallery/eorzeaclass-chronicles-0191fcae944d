@@ -13,9 +13,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function displayJobs() {
         jobs = await backend.getAllJobs();
         
+        // Group jobs by category
+        const jobsByCategory = jobs.reduce((acc, job) => {
+            if (!acc[job.category]) {
+                acc[job.category] = [];
+            }
+            acc[job.category].push(job);
+            return acc;
+        }, {});
+
         // Populate job list
-        jobList.innerHTML = jobs.map(job => `
-            <li data-job-name="${job.name}">${job.name}</li>
+        jobList.innerHTML = Object.entries(jobsByCategory).map(([category, categoryJobs]) => `
+            <h3>${category}</h3>
+            <ul>
+                ${categoryJobs.map(job => `
+                    <li data-job-name="${job.name}">${job.name}</li>
+                `).join('')}
+            </ul>
         `).join('');
 
         // Add click event listeners to job list items
@@ -40,6 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="job-card">
                 <h3>${job.name}</h3>
                 <p>Role: ${job.role}</p>
+                <p>Category: ${job.category}</p>
                 <img src="${job.imageUrl}" alt="${job.name}">
             </div>
         `).join('');
@@ -51,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="job-card">
                 <h3>${job.name}</h3>
                 <p>Role: ${job.role}</p>
+                <p>Category: ${job.category}</p>
                 <img src="${job.imageUrl}" alt="${job.name}">
             </div>
         `;

@@ -10,6 +10,7 @@ export const idlFactory = ({ IDL }) => {
     'name' : IDL.Text,
     'role' : IDL.Text,
     'imageUrl' : IDL.Text,
+    'category' : IDL.Text,
   });
   return IDL.Service({
     'addCharacter' : IDL.Func([Character], [], []),
