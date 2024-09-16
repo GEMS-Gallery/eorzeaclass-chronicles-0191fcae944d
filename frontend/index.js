@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { name: "Black Mage", role: "DPS", category: "Magical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/m/gWO1KNKngEEGiPwfFyaa9b4OYE.png" },
         { name: "Summoner", role: "DPS", category: "Magical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/4/IM3PoP6p06GdJaEwd2YAZi5zYk.png" },
         { name: "Red Mage", role: "DPS", category: "Magical Ranged DPS", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/2/wqNgq7nPWUhEveujuIE44BTCYI.png" },
+        // Limited Job
         { name: "Blue Mage", role: "DPS", category: "Limited Job", imageUrl: "https://img.finalfantasyxiv.com/lds/promo/h/6/M7Q0tqU8AB1PC5VHqbZx9bMjk8.png" }
     ];
 
